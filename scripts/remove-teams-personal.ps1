@@ -1,4 +1,4 @@
-﻿Start-Transcript -Path $env:TEMP\MSTeamsPersonalRemove.log
+Start-Transcript -Path $env:TEMP\MSTeamsPersonalRemove.log
 try{
 	If ($null -ne (Get-AppxPackage -Name MicrosoftTeams -AllUsers)) {
 	Write-Output "Removing MicrosoftTeams AppxPackage"
