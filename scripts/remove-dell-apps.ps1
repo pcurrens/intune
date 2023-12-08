@@ -1,12 +1,6 @@
 Start-Transcript -Path $env:TEMP\remove-dell-apps.log
 try{
-	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Core Services')) {
-	Write-Output 'Removing Dell Core Services Package'
-	Uninstall-Package -ProviderName msi -Name 'Dell Core Services'
-}
-	Else {
-	Write-Output 'Dell Core Services Package not present'
-}
+
 	#Tested on Dell Optimizer Core 4.1.351.0,4.0.310.0 and Dell Optimizer Service
 	If (Test-Path 'C:\Program Files (x86)\InstallShield Installation Information\{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}\DellOptimizer.exe'){
 	Write-Output 'Removing Dell Optimizer Core/Dell Optimizer Service'
@@ -15,7 +9,30 @@ try{
 	Else{
 	Write-Output "Dell Optimizer Core/Service not present"
 }
-	#Tested on Dell Peripheral Manager 2.0.0.139
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Core Services')) {
+	Write-Output 'Removing Dell Core Services Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Core Services'
+}
+	Else {
+	Write-Output 'Dell Core Services Package not present'
+}
+	#Tested on Dell Optimizer 1.0.554.0
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Optimizer')) {
+	Write-Output 'Removing Dell Optimizer Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Optimizer'
+}
+	Else {
+	Write-Output 'Dell Optimizer Package not present'
+}
+	#Tested on DellOptimizerUI 1.0.554.0
+	If ($null -ne (Get-Package -ProviderName msi -Name 'DellOptimizerUI')) {
+	Write-Output 'Removing DellOptimizerUI Package'
+	Uninstall-Package -ProviderName msi -Name 'DellOptimizerUI'
+}
+	Else {
+	Write-Output 'DellOptimizerUI Package not present'
+}
+	#Tested on Dell Display Manager 2.0.0.139
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe') {
 	Write-Output "Removing MSTeams AppxPackage"
 	&'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe' /S
