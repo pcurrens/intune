@@ -65,6 +65,14 @@ try{
 	Else{
 	Write-Output 'Dell Peripheral Manager not present'
 }
+	#Tested on ExpressConnect Drivers & Services 4.1023.208
+	If ($null -ne (Get-Package -ProviderName Programs -Name 'ExpressConnect Drivers & Services')) {
+	Write-Output "Removing ExpressConnect Drivers & Services Package"
+	Uninstall-Package -ProviderName msi -Name 'ExpressConnect Drivers & Services' | Out-Null
+}
+	Else{
+	Write-Output 'ExpressConnect Drivers & Services not present'
+}
 }
 catch{
 	$errMsg = $_.Exception.Message
