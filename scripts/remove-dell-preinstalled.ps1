@@ -1,4 +1,4 @@
-Start-Transcript -Path $env:TEMP\MSTeamsPersonalRemove.log
+Start-Transcript -Path $env:TEMP\remove-dell-apps.log
 try{
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Core Services')) {
 	Write-Output 'Removing Dell Core Services Package'
