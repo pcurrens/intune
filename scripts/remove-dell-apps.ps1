@@ -8,7 +8,7 @@ try{
 	Else{
 	Write-Output "Dell Optimizer Core/Service not present"
 }
-	#Tested on Dell Core Services 1.0.248.0
+	#Tested on Dell Core Services 1.0.248.0, 1.3.371.1
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Core Services')) {
 	Write-Output 'Removing Dell Core Services Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Core Services'
@@ -16,7 +16,7 @@ try{
 	Else {
 	Write-Output 'Dell Core Services Package not present'
 }
-	#Tested on Dell Optimizer 1.0.554.0, 2.0.651.0
+	#Tested on Dell Optimizer 1.0.554.0, 2.0.651.0, 4.1.351.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Optimizer')) {
 	Write-Output 'Removing Dell Optimizer Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Optimizer'
@@ -24,7 +24,7 @@ try{
 	Else {
 	Write-Output 'Dell Optimizer Package not present'
 }
-	#Tested on DellOptimizerUI 1.0.554.0, 2.0.651.0, 4.0.310.0
+	#Tested on DellOptimizerUI 1.0.554.0, 2.0.651.0, 4.0.310.0, 4.1.351.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'DellOptimizerUI')) {
 	Write-Output 'Removing DellOptimizerUI Package'
 	Uninstall-Package -ProviderName msi -Name 'DellOptimizerUI'
@@ -40,6 +40,7 @@ try{
 	Else{
 	Write-Output 'Dell Display Manager 2.0 not present'
 }
+	#Tested on Dell Display Manager 2.1.1.37
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe') {
 	Write-Output "Removing Dell Display Manager 2 AppxPackage"
 	&'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe' /S
@@ -47,7 +48,7 @@ try{
 	Else{
 	Write-Output 'Dell Display Manager 2 not present'
 }
-	#Tested on Dell Peripheral Manager 1.6.5
+	#Tested on Dell Peripheral Manager 1.6.5, 1.6.7
 	If (Test-Path 'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe') {
 	Write-Output "Removing Dell Peripheral Manager AppxPackage"
 	&'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe' /S
