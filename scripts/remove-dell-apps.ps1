@@ -1,7 +1,7 @@
 Start-Transcript -Path $env:TEMP\remove-dell-apps.log
 try{
 
-	#Tested on Dell Optimizer Core 4.1.351.0,4.0.310.0 and Dell Optimizer Service
+	#Tested on Dell Optimizer Core 4.1.351.0,4.0.310.0 and Dell Optimizer Service 1.0.554.0
 	If (Test-Path 'C:\Program Files (x86)\InstallShield Installation Information\{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}\DellOptimizer.exe'){
 	Write-Output 'Removing Dell Optimizer Core/Dell Optimizer Service'
 	&'C:\Program Files (x86)\InstallShield Installation Information\{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}\DellOptimizer.exe' -remove -runfromtemp -silent
