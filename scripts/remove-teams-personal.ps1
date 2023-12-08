@@ -36,6 +36,7 @@ catch{
 Stop-Transcript
 
 <#
+##stop the process so it can be removed
     Try {
         Write-Output “Removing Microsoft Teams Personal App”
         If (Get-Process msteams -ErrorAction SilentlyContinue) {
@@ -47,4 +48,19 @@ Stop-Transcript
             catch {
                 Write-Output “Unable to stop process, trying to remove anyway”
             }
- #>
+	    }
+	    
+##stop it from coming back - doesn't work because system doesn't have permissions on the reg key
+$registryPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Communications"
+If (!(Test-Path $registryPath)) { 
+    New-Item $registryPath
+}
+Set-ItemProperty $registryPath ConfigureChatAutoInstall -Value 0
+
+##unpin it
+$registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Chat"
+If (!(Test-Path $registryPath)) { 
+    New-Item $registryPath
+}
+Set-ItemProperty $registryPath "ChatIcon" -Value 2
+#>
