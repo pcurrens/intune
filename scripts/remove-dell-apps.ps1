@@ -15,6 +15,7 @@ try{
 	Else{
 	Write-Output "Dell Optimizer Core/Service not present"
 }
+	#Tested on Dell Peripheral Manager 2.0.0.139
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe') {
 	Write-Output "Removing MSTeams AppxPackage"
 	&'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe' /S
@@ -29,6 +30,7 @@ try{
 	Else{
 	Write-Output 'Dell Display Manager 2 not present'
 }
+	#Tested on Dell Peripheral Manager 1.6.5
 	If (Test-Path 'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe') {
 	Write-Output "Removing MSTeams AppxPackage"
 	&'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe' /S
