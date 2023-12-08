@@ -1,6 +1,5 @@
 Start-Transcript -Path $env:TEMP\remove-dell-apps.log
 try{
-
 	#Tested on Dell Optimizer Core 4.1.351.0,4.0.310.0 and Dell Optimizer Service 1.0.554.0, 2.0.651.0
 	If (Test-Path 'C:\Program Files (x86)\InstallShield Installation Information\{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}\DellOptimizer.exe'){
 	Write-Output 'Removing Dell Optimizer Core/Dell Optimizer Service'
@@ -9,6 +8,7 @@ try{
 	Else{
 	Write-Output "Dell Optimizer Core/Service not present"
 }
+	#Tested on Dell Core Services 1.0.248.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Core Services')) {
 	Write-Output 'Removing Dell Core Services Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Core Services'
