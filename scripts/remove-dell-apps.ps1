@@ -34,14 +34,14 @@ try{
 }
 	#Tested on Dell Display Manager 2.0.0.139
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe') {
-	Write-Output "Removing MSTeams AppxPackage"
+	Write-Output "Removing Dell Display Manager 2.0 AppxPackage"
 	&'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe' /S
 }
 	Else{
 	Write-Output 'Dell Display Manager 2.0 not present'
 }
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe') {
-	Write-Output "Removing MSTeams AppxPackage"
+	Write-Output "Removing Dell Display Manager 2 AppxPackage"
 	&'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe' /S
 }
 	Else{
@@ -49,7 +49,7 @@ try{
 }
 	#Tested on Dell Peripheral Manager 1.6.5
 	If (Test-Path 'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe') {
-	Write-Output "Removing MSTeams AppxPackage"
+	Write-Output "Removing Dell Peripheral Manager AppxPackage"
 	&'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe' /S
 }
 	Else{
