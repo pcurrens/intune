@@ -1,4 +1,4 @@
-Start-Transcript -Path $env:TEMP\remove-dell-dommand-update.log
+Start-Transcript -Path $env:TEMP\remove-dell-command-update.log
 #using Out-Null to force wait for uninstall
 try{
 	#Tested on Dell Command | Update for Windows Universal 5.1.0, 5.0.0
