@@ -1,7 +1,7 @@
 Start-Transcript -Path $env:TEMP\remove-dell-command-power-manager.log
 #using Out-Null to force wait for uninstall
 try{
-	#Tested on Dell Command | Power Manager
+	#Tested on Dell Command | Power Manager 2.1.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Power Manager')) {
 	Write-Output 'Removing Dell Command | Power Manager Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Command | Power Manager' | Out-Null
