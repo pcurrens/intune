@@ -1,4 +1,4 @@
-Start-Transcript -Path $env:TEMP\remove-dell-apps.log
+Start-Transcript -Path $env:TEMP\remove-dell-optimizer.log
 #using Out-Null to force wait for uninstall
 try{
 	#Tested on Dell Optimizer Service 1.0.554.0, 2.0.651.0, 3.2.212.0 (has to run twice for 1.0.554.0 because it doesn't wait)
