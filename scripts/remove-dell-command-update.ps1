@@ -17,6 +17,14 @@ try{
 	Else {
 	Write-Output 'Dell Command | Update for Windows Package not present'
 }
+	#Tested on Dell Command | Update 4.4.0
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update')) {
+	Write-Output 'Removing Dell Command | Update Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update' | Out-Null
+}
+	Else {
+	Write-Output 'Dell Command | Update Package not present'
+}
 }
 catch{
 	$errMsg = $_.Exception.Message
