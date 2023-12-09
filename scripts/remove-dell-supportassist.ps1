@@ -9,6 +9,14 @@ try{
 	Else {
 	Write-Output 'Dell SupportAssist Package not present'
 }
+	#Tested on Dell SupportAssist Remediation
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell SupportAssist Remediation')) {
+	Write-Output 'Removing Dell SupportAssist Remediation Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell SupportAssist Remediation' | Out-Null
+}
+	Else {
+	Write-Output 'Dell SupportAssist Remediation Package not present'
+}
 }
 catch{
 	$errMsg = $_.Exception.Message
