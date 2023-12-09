@@ -17,6 +17,14 @@ try{
 	Else {
 	Write-Output 'Dell SupportAssist Remediation Package not present'
 }
+	#Tested on DellInc.DellSupportAssistforPCs
+	If ($null -ne (Get-AppxPackage -ProviderName msi -Name 'DellInc.DellSupportAssistforPCs')) {
+	Write-Output 'Removing DellInc.DellSupportAssistforPCs Appx Package'
+	Uninstall-AppxPackage -ProviderName msi -Name 'DellInc.DellSupportAssistforPCs' | Out-Null
+}
+	Else {
+	Write-Output 'DellInc.DellSupportAssistforPCs Appx Package not present'
+}
 }
 catch{
 	$errMsg = $_.Exception.Message
