@@ -9,7 +9,7 @@ try{
 	Else {
 	Write-Output 'Dell Command | Power Manager not present'
 }
-	#Tested on Dell Power Manager Service 3.9.0
+	#Tested on Dell Power Manager Service 3.9.0, 3.15.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Power Manager Service')) {
 	Write-Output 'Removing Dell Power Manager Service Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Power Manager Service' | Out-Null
