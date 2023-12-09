@@ -25,6 +25,20 @@ try{
 	Else {
 	Write-Output 'Dell Command | Update Package not present'
 }
+	If ($null -ne (Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers)) {
+	Write-Output 'Removing DellInc.DellCommandUpdate Appx Package'
+	Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers | Remove-AppxPackage -AllUsers | Out-Null
+}
+	Else {
+	Write-Output 'DellInc.DellCommandUpdate Appx Package not present'
+}
+	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellCommandUpdate'})) {
+	Write-Output 'Removing DellInc.DellCommandUpdate AppxProvisioned Package'
+	Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellCommandUpdate'} | Remove-AppxProvisionedPackage -Online -AllUsers | Out-Null
+}
+	Else{
+	Write-Output 'DellInc.DellCommandUpdate AppxProvisioned Package not present'
+}
 }
 catch{
 	$errMsg = $_.Exception.Message
