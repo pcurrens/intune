@@ -25,6 +25,14 @@ try{
 	Else {
 	Write-Output 'Dell Command | Update Package not present'
 }
+	#Tested on Dell Command | Update for Windows 10 4.3.0
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update for Windows 10')) {
+	Write-Output 'Removing Dell Command | Update for Windows 10 Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update for Windows 10' | Out-Null
+}
+	Else {
+	Write-Output 'Dell Command | Update for Windows 10 Package not present'
+}
 	If ($null -ne (Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers)) {
 	Write-Output 'Removing DellInc.DellCommandUpdate Appx Package'
 	Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers | Remove-AppxPackage -AllUsers | Out-Null
