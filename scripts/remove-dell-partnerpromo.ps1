@@ -16,3 +16,8 @@ try{
 	Write-Output 'DellInc.DellOptimizer AppxProvisioned Package not present'
 }
 }
+catch{
+	$errMsg = $_.Exception.Message
+	write-error $errMsg
+}
+Stop-Transcript
