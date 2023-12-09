@@ -1,21 +1,21 @@
 Start-Transcript -Path $env:TEMP\remove-dell-dommand-update.log
 #using Out-Null to force wait for uninstall
 try{
-	#Tested on Dell SupportAssist 3.14.2.45116
-	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell SupportAssist')) {
-	Write-Output 'Removing Dell SupportAssist Package'
-	Uninstall-Package -ProviderName msi -Name 'Dell SupportAssist' | Out-Null
+	#Tested on Dell Command | Update for Windows Universal 5.1.0
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update for Windows Universal')) {
+	Write-Output 'Removing Dell Command | Update for Windows Universal Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update for Windows Universal' | Out-Null
 }
 	Else {
-	Write-Output 'Dell SupportAssist Package not present'
+	Write-Output 'Dell Command | Update for Windows Universal not present'
 }
-	#Tested on Dell SupportAssist Remediation
-	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell SupportAssist Remediation')) {
-	Write-Output 'Removing Dell SupportAssist Remediation Package'
-	Uninstall-Package -ProviderName msi -Name 'Dell SupportAssist Remediation' | Out-Null
+	#Tested on Dell Command | Update for Windows
+	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update for Windows')) {
+	Write-Output 'Removing Dell Command | Update for Windows Package'
+	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update for Windows' | Out-Null
 }
 	Else {
-	Write-Output 'Dell SupportAssist Remediation Package not present'
+	Write-Output 'Dell Command | Update for Windows Package not present'
 }
 }
 catch{
