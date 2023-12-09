@@ -16,7 +16,7 @@ try{
 	Else {
 	Write-Output 'Dell Digital Delivery Service Package not present'
 }
-	#Tested on Dell Digital Delivery Services 4.0.34.0
+	#Tested on Dell Digital Delivery Services 4.0.34.0, 5.0.82.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Digital Delivery Services')) {
 	Write-Output 'Removing Dell Digital Delivery Service Packages'
 	Uninstall-Package -ProviderName msi -Name 'Dell Digital Delivery Services' | Out-Null
