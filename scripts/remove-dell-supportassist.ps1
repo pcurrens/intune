@@ -26,11 +26,25 @@ try{
 	Write-Output 'DellInc.DellSupportAssistforPCs Appx Package not present'
 }
 	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellSupportAssistforPCs'})) {
-	Write-Output "Removing DellInc.DellSupportAssistforPCs AppxProvisioned Package"
+	Write-Output 'Removing DellInc.DellSupportAssistforPCs AppxProvisioned Package'
 	Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellSupportAssistforPCs'} | Remove-AppxProvisionedPackage -Online -AllUsers | Out-Null
 }
 	Else{
-	Write-Output "DellInc.DellSupportAssistforPCs AppxProvisioned Package not present"
+	Write-Output 'DellInc.DellSupportAssistforPCs AppxProvisioned Package not present'
+}
+	If ($null -ne (Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers)) {
+	Write-Output 'Removing DellInc.DellCommandUpdate Appx Package'
+	Get-AppxPackage -Name 'DellInc.DellCommandUpdate' -AllUsers | Remove-AppxPackage -AllUsers | Out-Null
+}
+	Else {
+	Write-Output 'DellInc.DellCommandUpdate Appx Package not present'
+}
+	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellCommandUpdate'})) {
+	Write-Output 'Removing DellInc.DellCommandUpdate AppxProvisioned Package'
+	Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'DellInc.DellCommandUpdate'} | Remove-AppxProvisionedPackage -Online -AllUsers | Out-Null
+}
+	Else{
+	Write-Output 'DellInc.DellCommandUpdate AppxProvisioned Package not present'
 }
 }
 catch{
@@ -38,13 +52,3 @@ catch{
 	write-error $errMsg
 }
 Stop-Transcript
-<#
-
-	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MicrosoftTeams'})) {
-	Write-Output "Removing MicrosoftTeams AppxProvisionedPackage"
-	Remove-AppxProvisionedPackage -online -Packagename MicrosoftTeams -AllUsers | Out-Null
-}
-	Else{
-	Write-Output "MicrosoftTeams AppxProvisioned Package not present"
-}
-#>
