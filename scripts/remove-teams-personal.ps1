@@ -1,33 +1,33 @@
 Start-Transcript -Path $env:TEMP\remove-teams-personal.log
 #using Out-Null to force wait for uninstall
 try{
-	If ($null -ne (Get-AppxPackage -Name MicrosoftTeams -AllUsers)) {
-	Write-Output "Removing MicrosoftTeams AppxPackage"
-	Get-AppxPackage -Name MicrosoftTeams -AllUsers | Remove-AppPackage -AllUsers | Out-Null
+	If ($null -ne (Get-AppxPackage -Name 'MicrosoftTeams' -AllUsers)) {
+	Write-Output "Removing MicrosoftTeams Appx Package"
+	Get-AppxPackage -Name 'MicrosoftTeams' -AllUsers | Remove-AppPackage -AllUsers | Out-Null
 }
 	Else {
-	Write-Output "MicrosoftTeams AppxPackage not present"
+	Write-Output "MicrosoftTeams Appx Package not present"
 }
 	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MicrosoftTeams'})) {
-	Write-Output "Removing MicrosoftTeams AppxProvisionedPackage"
-	Remove-AppxProvisionedPackage -online -Packagename MicrosoftTeams -AllUsers | Out-Null
+	Write-Output "Removing MicrosoftTeams AppxProvisioned Package"
+ 	Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MicrosoftTeams'} | Remove-AppxProvisionedPackage -Online -AllUsers | Out-Null
 }
 	Else{
 	Write-Output "MicrosoftTeams AppxProvisioned Package not present"
 }
-	If ($null -ne (Get-AppxPackage -Name MSTeams -AllUsers)) {
-	Write-Output "Removing MSTeams AppxPackage"
-	Get-AppxPackage -Name MSTeams -AllUsers | Remove-AppPackage -AllUsers | Out-Null
+	If ($null -ne (Get-AppxPackage -Name 'MSTeams' -AllUsers)) {
+	Write-Output "Removing MSTeams Appx Package"
+	Get-AppxPackage -Name 'MSTeams' -AllUsers | Remove-AppPackage -AllUsers | Out-Null
 }
 	Else{
 	Write-Output "MSTeams AppxPackage not present"
 }
 	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MSTeams'})) {
-	Write-Output "Removing MSTeams AppxProvisionedPackage"
-	Remove-AppxProvisionedPackage -online -Packagename MSTeams -AllUsers | Out-Null
+	Write-Output "Removing MSTeams AppxProvisioned Package"
+	Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MSTeams'} | Remove-AppxProvisionedPackage -Online -AllUsers | Out-Null
 }
 	Else{
-	Write-Output "MSTeams AppxProvisionedPackage not present"
+	Write-Output "MSTeams AppxProvisioned Package not present"
 }
 }
 catch{
