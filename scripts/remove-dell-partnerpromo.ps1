@@ -1,4 +1,4 @@
-Start-Transcript -Path $env:TEMP\remove-dell-supportassist.log
+Start-Transcript -Path $env:TEMP\remove-dell-partnerpromo.log
 #using Out-Null to force wait for uninstall
 try{
 	If ($null -ne (Get-AppxPackage -Name 'DellInc.PartnerPromo' -AllUsers)) {
