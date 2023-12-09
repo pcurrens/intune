@@ -43,7 +43,7 @@ try{
 }
 	#Tested on Dell Display Manager 2.0.0.137, 2.0.0.139
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe') {
-	Write-Output "Removing Dell Display Manager 2.0 AppxPackage"
+	Write-Output "Removing Dell Display Manager 2.0 Package"
 	&'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe' /S | Out-Null
 }
 	Else{
@@ -51,7 +51,7 @@ try{
 }
 	#Tested on Dell Display Manager 2.1.1.37
 	If (Test-Path 'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe') {
-	Write-Output "Removing Dell Display Manager 2 AppxPackage"
+	Write-Output "Removing Dell Display Manager 2 Package"
 	&'C:\Program Files\Dell\Dell Display Manager 2\uninst.exe' /S | Out-Null
 }
 	Else{
@@ -59,7 +59,7 @@ try{
 }
 	#Tested on Dell Peripheral Manager 1.6.1, 1.6.5, 1.6.7
 	If (Test-Path 'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe') {
-	Write-Output "Removing Dell Peripheral Manager AppxPackage"
+	Write-Output "Removing Dell Peripheral Manager Package"
 	&'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe' /S | Out-Null
 }
 	Else{
