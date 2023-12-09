@@ -42,7 +42,7 @@ try{
 	Write-Output 'DellOptimizerUI Package not present'
 }
 	#Tested on Dell Display Manager 2.0.0.137, 2.0.0.139
-	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Display Manager 2.0') {
+	If ($null -ne (Get-Package -ProviderName Programs -Name 'Dell Display Manager 2.0') {
 	Write-Output "Removing Dell Display Manager 2.0 Package"
 	&'C:\Program Files\Dell\Dell Display Manager 2.0\uninst.exe' /S | Out-Null
 }
@@ -58,7 +58,7 @@ try{
 	Write-Output 'Dell Display Manager 2 not present'
 }
 	#Tested on Dell Peripheral Manager 1.6.1, 1.6.5, 1.6.7
-	If (Test-Path 'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe') {
+	If ($null -ne (Get-Package -ProviderName Programs -Name 'Dell Peripheral Manager') {
 	Write-Output "Removing Dell Peripheral Manager Package"
 	&'C:\Program Files\Dell\Dell Peripheral Manager\Uninstall.exe' /S | Out-Null
 }
