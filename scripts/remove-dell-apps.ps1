@@ -1,7 +1,7 @@
 Start-Transcript -Path $env:TEMP\remove-dell-apps.log
 #using Out-Null to force wait for uninstall
 try{
-	#Tested on Dell Optimizer Service 1.0.554.0, 2.0.651.0, 3.2.212.0
+	#Tested on Dell Optimizer Service 1.0.554.0, 2.0.651.0, 3.2.212.0 (has to run twice for 1.0.554.0 because it doesn't wait)
  	If ($null -ne (Get-Package -ProviderName Programs -Name 'Dell Optimizer Service')) {
 	Write-Output 'Removing Dell Optimizer Service'
 	&'C:\Program Files (x86)\InstallShield Installation Information\{286A9ADE-A581-43E8-AA85-6F5D58C7DC88}\DellOptimizer.exe' -remove -runfromtemp -silent | Out-Null
