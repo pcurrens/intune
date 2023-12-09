@@ -1,6 +1,7 @@
 Start-Transcript -Path $env:TEMP\remove-dell-digital-delivery.log
 #using Out-Null to force wait for uninstall
 try{
+	#Tested on Dell Digital Delivery 3.5.2015.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Digital Delivery')) {
 	Write-Output 'Removing Dell Digital Delivery Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Digital Delivery' | Out-Null
