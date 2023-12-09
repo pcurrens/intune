@@ -1,7 +1,7 @@
 Start-Transcript -Path $env:TEMP\remove-dell-dommand-update.log
 #using Out-Null to force wait for uninstall
 try{
-	#Tested on Dell Command | Update for Windows Universal 5.1.0
+	#Tested on Dell Command | Update for Windows Universal 5.1.0, 5.0.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update for Windows Universal')) {
 	Write-Output 'Removing Dell Command | Update for Windows Universal Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update for Windows Universal' | Out-Null
@@ -17,7 +17,7 @@ try{
 	Else {
 	Write-Output 'Dell Command | Update for Windows Package not present'
 }
-	#Tested on Dell Command | Update 4.4.0
+	#Tested on Dell Command | Update 4.4.0, 4.6.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update')) {
 	Write-Output 'Removing Dell Command | Update Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update' | Out-Null
