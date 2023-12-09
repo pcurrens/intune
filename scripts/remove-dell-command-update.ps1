@@ -17,7 +17,7 @@ try{
 	Else {
 	Write-Output 'Dell Command | Update for Windows Package not present'
 }
-	#Tested on Dell Command | Update 4.4.0, 4.6.0
+	#Tested on Dell Command | Update 4.4.0, 4.6.0, 5.1.0
 	If ($null -ne (Get-Package -ProviderName msi -Name 'Dell Command | Update')) {
 	Write-Output 'Removing Dell Command | Update Package'
 	Uninstall-Package -ProviderName msi -Name 'Dell Command | Update' | Out-Null
