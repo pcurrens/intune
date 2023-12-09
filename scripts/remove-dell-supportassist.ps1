@@ -18,12 +18,19 @@ try{
 	Write-Output 'Dell SupportAssist Remediation Package not present'
 }
 	#Tested on DellInc.DellSupportAssistforPCs
-	If ($null -ne (Get-AppxPackage -ProviderName msi -Name 'DellInc.DellSupportAssistforPCs')) {
+	If ($null -ne (Get-AppxPackage -Name 'DellInc.DellSupportAssistforPCs' -AllUsers)) {
 	Write-Output 'Removing DellInc.DellSupportAssistforPCs Appx Package'
-	Uninstall-AppxPackage -ProviderName msi -Name 'DellInc.DellSupportAssistforPCs' | Out-Null
+	Get-AppxPackage -Name 'DellInc.DellSupportAssistforPCs' -AllUsers | Remove-AppxPackage | Out-Null
 }
 	Else {
 	Write-Output 'DellInc.DellSupportAssistforPCs Appx Package not present'
+}
+	If ($null -ne (Get-AppxProvisionedPackage -Online -AllUsers | Where-Object {$_.DisplayName -eq 'DellInc.DellSupportAssistforPCs'})) {
+	Write-Output "Removing MicrosoftTeams AppxProvisionedPackage"
+	Remove-AppxProvisionedPackage -online -Packagename MicrosoftTeams -AllUsers | Out-Null
+}
+	Else{
+	Write-Output "MicrosoftTeams AppxProvisioned Package not present"
 }
 }
 catch{
@@ -31,3 +38,13 @@ catch{
 	write-error $errMsg
 }
 Stop-Transcript
+<#
+
+	If ($null -ne (Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'MicrosoftTeams'})) {
+	Write-Output "Removing MicrosoftTeams AppxProvisionedPackage"
+	Remove-AppxProvisionedPackage -online -Packagename MicrosoftTeams -AllUsers | Out-Null
+}
+	Else{
+	Write-Output "MicrosoftTeams AppxProvisioned Package not present"
+}
+#>
